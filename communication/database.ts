@@ -152,12 +152,10 @@ export const databaseLoader = new ResourceLoader<Database>({
   async load() {
     // automatically create the database schema on startup
     const client = new postgres.Client({
-      hostname: "db.hmobiteisoqawfyuzrdb.supabase.co",
-      //hostname: getEnvOrThrow("SUPABASE_DB_HOSTNAME"),
+      hostname: getEnvOrThrow("SUPABASE_DB_HOSTNAME"),
       port: Deno.env.get("SUPABASE_DB_PORT") ?? 5432,
       user: Deno.env.get("SUPABASE_DB_USER") ?? "postgres",
-      //password: getEnvOrThrow("SUPABASE_DB_PASSWORD"),
-      password: "@Rt8ADGsEGR4MCG",
+      password: getEnvOrThrow("SUPABASE_DB_PASSWORD"),
       database: Deno.env.get("SUPABASE_DB_NAME") ?? "postgres",
     });
     await client.connect();

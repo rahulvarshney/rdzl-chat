@@ -14,8 +14,8 @@ export class Database {
 
   constructor(client?: supabase.SupabaseClient) {
     this.#client = client ?? supabase.createClient(
-      Deno.env.get("SUPABASE_API_URL")!,
-      Deno.env.get("SUPABASE_ANON_KEY")!,
+      "https://hmobiteisoqawfyuzrdb.supabase.co",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhtb2JpdGVpc29xYXdmeXV6cmRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjEyMTU1NjUsImV4cCI6MTk3Njc5MTU2NX0.Z9q8vMQCsZqOP-6H_Ose5vD8wNmHZ_h_XHT6JhPZnWQ",
     );
   }
 
@@ -148,10 +148,12 @@ export const databaseLoader = new ResourceLoader<Database>({
   async load() {
     // automatically create the database schema on startup
     const client = new postgres.Client({
-      hostname: getEnvOrThrow("SUPABASE_DB_HOSTNAME"),
+      hostname: "db.hmobiteisoqawfyuzrdb.supabase.co",
+      //hostname: getEnvOrThrow("SUPABASE_DB_HOSTNAME"),
       port: Deno.env.get("SUPABASE_DB_PORT") ?? 5432,
       user: Deno.env.get("SUPABASE_DB_USER") ?? "postgres",
-      password: getEnvOrThrow("SUPABASE_DB_PASSWORD"),
+      //password: getEnvOrThrow("SUPABASE_DB_PASSWORD"),
+      password: "@Rt8ADGsEGR4MCG",
       database: Deno.env.get("SUPABASE_DB_NAME") ?? "postgres",
     });
     await client.connect();

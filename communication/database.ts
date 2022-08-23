@@ -20,8 +20,6 @@ export class Database {
     this.#client = client ?? supabase.createClient(
       Deno.env.get("SUPABASE_API_URL"),
       Deno.env.get("SUPABASE_ANON_KEY")     
-      //"https://hmobiteisoqawfyuzrdb.supabase.co",
-      //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhtb2JpdGVpc29xYXdmeXV6cmRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjEyMTU1NjUsImV4cCI6MTk3Njc5MTU2NX0.Z9q8vMQCsZqOP-6H_Ose5vD8wNmHZ_h_XHT6JhPZnWQ",
     );
   }
 

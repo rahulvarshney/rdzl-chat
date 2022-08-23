@@ -2,6 +2,10 @@ import { ResourceLoader } from "../helpers/loader.ts";
 import * as postgres from "$postgres";
 import * as supabase from "supabase";
 import type { MessageView } from "./types.ts";
+import "https://deno.land/x/dotenv/load.ts";
+
+
+
 
 export interface DatabaseUser {
   userId: number;
@@ -14,8 +18,10 @@ export class Database {
 
   constructor(client?: supabase.SupabaseClient) {
     this.#client = client ?? supabase.createClient(
-      "https://hmobiteisoqawfyuzrdb.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhtb2JpdGVpc29xYXdmeXV6cmRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjEyMTU1NjUsImV4cCI6MTk3Njc5MTU2NX0.Z9q8vMQCsZqOP-6H_Ose5vD8wNmHZ_h_XHT6JhPZnWQ",
+      Deno.env.get("SUPABASE_API_URL"),
+      Deno.env.get("SUPABASE_ANON_KEY")     
+      //"https://hmobiteisoqawfyuzrdb.supabase.co",
+      //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhtb2JpdGVpc29xYXdmeXV6cmRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjEyMTU1NjUsImV4cCI6MTk3Njc5MTU2NX0.Z9q8vMQCsZqOP-6H_Ose5vD8wNmHZ_h_XHT6JhPZnWQ",
     );
   }
 
